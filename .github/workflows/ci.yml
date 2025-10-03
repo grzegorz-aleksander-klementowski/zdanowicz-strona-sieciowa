@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate HTML with W3C Nu
+        run: npx --yes html-validator-cli --file index.html --format text
+
+      - name: Stylelint
+        if: ${{ hashFiles('.stylelintrc*') != '' }}
+        run: npx --yes stylelint "css/**/*.css"
+
+      - name: ESLint
+        if: ${{ hashFiles('.eslintrc*') != '' }}
+        run: npx --yes eslint "js/**/*.js"
+
+      - name: Prettier formatting check
+        if: ${{ hashFiles('.prettierrc*') != '' }}
+        run: npx --yes prettier --check .
