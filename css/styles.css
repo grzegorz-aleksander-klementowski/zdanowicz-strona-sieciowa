@@ -11315,3 +11315,106 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+/* Custom enhancements */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover,
+.hover-lift:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+#services .hover-lift,
+#why-us .hover-lift {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hover-lift img {
+  transition: transform 0.4s ease;
+}
+
+.hover-lift:hover img,
+.hover-lift:focus-within img {
+  transform: scale(1.05);
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffc800;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1030;
+}
+
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover,
+.scroll-top-btn:focus {
+  background-color: #cca000;
+  color: #fff;
+}
+
+.scroll-top-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.35);
+}
+
+.accordion-button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #212529;
+  background-color: rgba(255, 200, 0, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .hover-lift,
+  .scroll-top-btn {
+    transition: none;
+  }
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+  .hover-lift:hover,
+  .hover-lift:focus-within {
+    transform: none;
+    box-shadow: none;
+  }
+}
