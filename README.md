@@ -8,7 +8,8 @@ Static marketing site for podnośniki koszowe (boom lift) services around Wojcie
 - Responsive single-page layout covering services, realizations, company timeline, and certifications.
 - Optimized assets under `assets/` with custom photography and iconography.
 - Accessibility and SEO tweaks (Polish language metadata, localized copy, structured sections).
-- Lightweight GitHub Actions CI (`.github/workflows/ci.yml`) validating HTML (W3C Nu) and ready for Stylelint, ESLint, and Prettier checks once configs are added.
+- Lightweight GitHub Actions CI (`.github/workflows/ci.yml`) ready for Stylelint, ESLint, and Prettier checks once configs are added.
+- Dedicated W3C validation workflow (`.github/workflows/w3c-validation.yml`) running the official Nu validator against HTML and CSS.
 
 ## Template attribution
 - **UI framework:** [Start Bootstrap – Agency v7.0.12](https://startbootstrap.com/theme/agency) by Start Bootstrap LLC (MIT License).
@@ -23,6 +24,7 @@ Static marketing site for podnośniki koszowe (boom lift) services around Wojcie
    - `npx --yes stylelint "css/**/*.css"` (requires a `.stylelintrc*` file)
    - `npx --yes eslint "js/**/*.js"` (requires a `.eslintrc*` file)
    - `npx --yes prettier --check .` (requires a `.prettierrc*` file)
+   - `docker run --rm -v "$(pwd)":/site ghcr.io/validator/validator:latest /vnu-runtime-image/bin/vnu --errors-only --no-verbose /site/index.html /site/jelenia-gora.html /site/css/styles.css`
 
 ## Project structure
 - `index.html` – main landing page markup.

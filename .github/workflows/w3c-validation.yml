@@ -1,0 +1,26 @@
+name: W3C Validation
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run W3C validator (vnu)
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/site" \
+            ghcr.io/validator/validator:latest \
+            /vnu-runtime-image/bin/vnu \
+            --errors-only \
+            --no-verbose \
+            /site/index.html \
+            /site/jelenia-gora.html \
+            /site/css/styles.css
