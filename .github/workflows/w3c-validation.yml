@@ -23,5 +23,4 @@ jobs:
             --errors-only \
             --no-verbose \
             /site/index.html \
-            /site/jelenia-gora.html \
-            /site/css/styles.css
+            /site/jelenia-gora.html
