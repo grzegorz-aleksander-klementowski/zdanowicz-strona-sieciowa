@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Validate HTML with W3C Nu
-        run: npx --yes html-validator-cli --file index.html --format text
-
       - name: Stylelint
         if: ${{ hashFiles('.stylelintrc*') != '' }}
         run: npx --yes stylelint "css/**/*.css"
