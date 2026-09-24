@@ -19,6 +19,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}:/site" \
             ghcr.io/validator/validator:latest \
+            vnu \
             --errors-only \
             --no-verbose \
             /site/index.html \
